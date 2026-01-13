@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="es-ES">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Empresa MMA climatización | Instalación de Aire Acondicionado</title>
+    <meta name="description"
+        content="Instalación, mantenimiento y reparación de aire acondicionado en Santiago de Chile. Atención rápida, garantía y presupuesto sin compromiso." />
+    <style>
+        :root {
+            --bg: #0b1220;
+            --card: #111a2e;
+            --muted: #a9b5d6;
+            --text: #eaf0ff;
+            --brand: #4fd1c5;
+            --brand2: #60a5fa;
+            --ring: 0 0 0 3px rgba(79, 209, 197, .18);
+            --shadow: 0 20px 50px rgba(0, 0, 0, .35);
+            --radius: 18px;
+            --max: 1100px;
+            --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font);
+            color: var(--text);
+            background:
+                radial-gradient(1200px 600px at 20% -10%, rgba(96, 165, 250, .35), transparent 60%),
+                radial-gradient(900px 500px at 90% 10%, rgba(79, 209, 197, .30), transparent 55%),
+                linear-gradient(180deg, #070b14 0%, #0b1220 60%, #070b14 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .container {
+            max-width: var(--max);
+            margin: 0 auto;
+            padding: 0 18px
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            background: rgba(7, 11, 20, .55);
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+            gap: 14px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            letter-spacing: .2px;
+        }
+
+        .logo {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--brand), var(--brand2));
+            box-shadow: 0 12px 30px rgba(79, 209, 197, .25);
+            display: grid;
+            place-items: center;
+        }
+
+        .logo svg {
+            width: 22px;
+            height: 22px
+        }
+
+        .navlinks {
+            display: flex;
+            gap: 18px;
+            align-items: center
+        }
+
+        .navlinks a {
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 14px
+        }
+
+        .navlinks a:hover {
+            color: var(--text)
+        }
+
+        .cta {
+            display: flex;
+            gap: 10px;
+            align-items: center
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .10);
+            background: rgba(255, 255, 255, .04);
+            color: var(--text);
+            font-weight: 700;
+            font-size: 14px;
+            transition: .2s ease;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .25);
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            border-color: rgba(255, 255, 255, .18)
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, rgba(79, 209, 197, .95), rgba(96, 165, 250, .95));
+            border-color: rgba(255, 255, 255, .18);
+            color: #061019;
+        }
+
+        .btn:focus {
+            outline: none;
+            box-shadow: var(--ring), 0 10px 25px rgba(0, 0, 0, .25)
+        }
+
+        .hamburger {
+            display: none
+        }
+
+        .hero {
+            padding: 64px 0 24px;
+        }
+
+        .heroGrid {
+            display: grid;
+            gap: 22px;
+            grid-template-columns: 1.2fr .8fr;
+            align-items: stretch;
+        }
+
+        .badge {
+            display: inline-flex;
+            gap: 10px;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(79, 209, 197, .10);
+            border: 1px solid rgba(79, 209, 197, .22);
+            color: #c8fff7;
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        h1 {
+            margin: 14px 0 10px;
+            font-size: 46px;
+            line-height: 1.05;
+            letter-spacing: -.8px;
+        }
+
+        .lead {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.65;
+            margin: 0 0 18px
+        }
+
+        .heroActions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px
+        }
+
+        .kpis {
+            margin-top: 18px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .kpi {
+            padding: 14px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .09);
+        }
+
+        .kpi b {
+            display: block;
+            font-size: 18px
+        }
+
+        .kpi span {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        .card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .02));
+            border: 1px solid rgba(255, 255, 255, .10);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .heroCard {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heroCard:before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: radial-gradient(500px 220px at 20% 10%, rgba(79, 209, 197, .25), transparent 60%),
+                radial-gradient(500px 220px at 80% 40%, rgba(96, 165, 250, .22), transparent 60%);
+            pointer-events: none;
+        }
+
+        .heroCard>* {
+            position: relative
+        }
+
+        .heroCard h3 {
+            margin: 0;
+            font-size: 16px
+        }
+
+        .mini {
+            display: grid;
+            gap: 10px;
+        }
+
+        .miniRow {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.45;
+        }
+
+        .icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid rgba(255, 255, 255, .10);
+            display: grid;
+            place-items: center;
+            flex: 0 0 auto;
+        }
+
+        .icon svg {
+            width: 18px;
+            height: 18px;
+            opacity: .95
+        }
+
+        section {
+            padding: 54px 0
+        }
+
+        .sectionHead {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .sectionHead h2 {
+            margin: 0;
+            font-size: 28px;
+            letter-spacing: -.3px
+        }
+
+        .sectionHead p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 60ch
+        }
+
+        .grid3 {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(3, 1fr)
+        }
+
+        .grid2 {
+            display: grid;
+            gap: 14px;
+            grid-template-columns: repeat(2, 1fr)
+        }
+
+        .tile {
+            padding: 18px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .10);
+            transition: .2s ease;
+        }
+
+        .tile:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, .18)
+        }
+
+        .tile h3 {
+            margin: 8px 0 6px;
+            font-size: 16px
+        }
+
+        .tile p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.6
+        }
+
+        .pill {
+            display: inline-flex;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(96, 165, 250, .12);
+            border: 1px solid rgba(96, 165, 250, .22);
+            color: #d6e8ff;
+            font-weight: 700;
+            font-size: 12px;
+        }
+
+        .quote {
+            padding: 18px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .quote p {
+            margin: 0 0 10px;
+            color: var(--text);
+            line-height: 1.65
+        }
+
+        .quote span {
+            color: var(--muted);
+            font-size: 13px
+        }
+
+        form {
+            display: grid;
+            gap: 10px;
+        }
+
+        label {
+            font-size: 13px;
+            color: var(--muted)
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .12);
+            background: rgba(0, 0, 0, .22);
+            color: var(--text);
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            box-shadow: var(--ring);
+            border-color: rgba(79, 209, 197, .35)
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical
+        }
+
+        .contactCard {
+            padding: 18px
+        }
+
+        .contactMeta {
+            display: grid;
+            gap: 10px;
+            padding: 16px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .10);
+        }
+
+        .metaRow {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            color: var(--muted);
+            font-size: 14px
+        }
+
+        .footer {
+            padding: 26px 0 40px;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .floatWA {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            z-index: 60;
+            border-radius: 999px;
+            padding: 12px 14px;
+            background: linear-gradient(135deg, rgba(79, 209, 197, .95), rgba(96, 165, 250, .95));
+            color: #061019;
+            font-weight: 900;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, .35);
+            border: 1px solid rgba(255, 255, 255, .18);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .floatWA:hover {
+            transform: translateY(-1px)
+        }
+
+        .floatWA svg {
+            width: 18px;
+            height: 18px
+        }
+
+        @media (max-width: 920px) {
+            .heroGrid {
+                grid-template-columns: 1fr
+            }
+
+            h1 {
+                font-size: 40px
+            }
+
+            .grid3 {
+                grid-template-columns: 1fr
+            }
+
+            .grid2 {
+                grid-template-columns: 1fr
+            }
+
+            .kpis {
+                grid-template-columns: 1fr
+            }
+
+            .navlinks {
+                display: none
+            }
+
+            .hamburger {
+                display: inline-flex
+            }
+        }
+
+        .mobileMenu {
+            display: none;
+            padding: 0 18px 14px;
+        }
+
+        .mobileMenu a {
+            display: block;
+            padding: 12px 12px;
+            margin-top: 8px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .10);
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .mobileMenu a:hover {
+            color: var(--text);
+            border-color: rgba(255, 255, 255, .18)
+        }
+
+        .show {
+            display: block
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div class="container">
+            <nav class="nav">
+                <a class="brand" href="#inicio" aria-label="Inicio">
+                    <div class="logo" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2v20M4 6l16 12M20 6L4 18" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <span>Empresa MMA climatización</span>
+                </a>
+
+                <div class="navlinks" role="navigation" aria-label="Navegación principal">
+                    <a href="#servicios">Servicios</a>
+                    <a href="#proceso">Cómo trabajamos</a>
+                    <a href="#opiniones">Opiniones</a>
+                    <a href="#contacto">Contacto</a>
+                </div>
+
+                <div class="cta">
+                    <a class="btn hamburger" href="#menu" id="menuBtn" aria-label="Abrir menú">☰</a>
+                    <a class="btn" href="tel:+56939056898" id="phoneTop">Llamar</a>
+                    <a class="btn primary" href="#contacto">Pedir presupuesto</a>
+                </div>
+            </nav>
+
+            <div class="mobileMenu" id="mobileMenu" aria-label="Menú móvil">
+                <a href="#servicios">Servicios</a>
+                <a href="#proceso">Cómo trabajamos</a>
+                <a href="#opiniones">Opiniones</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio" class="hero">
+        <div class="container">
+            <div class="heroGrid">
+                <div>
+                    <span class="badge"><span aria-hidden="true">❄️</span> Instalación • Mantenimiento •
+                        Reparación</span>
+
+                    <h1>Aire acondicionado bien instalado.<br />Más frío, menos consumo.</h1>
+                    <p class="lead">
+                        Servicio profesional en <b>Santiago de Chile</b> para hogares y empresas:
+                        instalación split/inverter, limpieza, recarga de gas, corrección de fugas y mantenimiento
+                        preventivo con garantía.
+                    </p>
+
+                    <div class="heroActions">
+                        <a class="btn primary" href="#contacto">Solicitar presupuesto</a>
+                        <a class="btn" href="#servicios">Ver servicios</a>
+                    </div>
+
+                    <div class="kpis" aria-label="Indicadores">
+                        <div class="kpi"><b>Garantía</b><span>Trabajo con checklist y respaldo</span></div>
+                        <div class="kpi"><b>Atención rápida</b><span>Agendamiento flexible</span></div>
+                        <div class="kpi"><b>Presupuesto claro</b><span>Sin sorpresas, todo por escrito</span></div>
+                    </div>
+                </div>
+
+                <aside class="card heroCard" aria-label="Tarjeta informativa">
+                    <h3>¿Qué incluye el servicio?</h3>
+                    <div class="mini">
+                        <div class="miniRow">
+                            <div class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 12h16M12 4v16" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div><b style="color:var(--text)">Instalación completa</b><br />Soportes, nivelación, vacío,
+                                prueba y puesta en marcha.</div>
+                        </div>
+
+                        <div class="miniRow">
+                            <div class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M7 7l10 10M17 7L7 17" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div><b style="color:var(--text)">Mantenimiento</b><br />Limpieza profunda, drenaje,
+                                serpentín, filtros y revisión.</div>
+                        </div>
+
+                        <div class="miniRow">
+                            <div class="icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none">
+                                    <path d="M12 22s7-4.5 7-12a7 7 0 10-14 0c0 7.5 7 12 7 12z" stroke="currentColor"
+                                        stroke-width="2" />
+                                </svg>
+                            </div>
+                            <div><b style="color:var(--text)">Diagnóstico y reparación</b><br />Fugas, recarga,
+                                sensores, placa, ventilador y más.</div>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:4px">
+                        <span class="pill">Split / Inverter</span>
+                        <span class="pill">Residencial</span>
+                        <span class="pill">Comercial</span>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <section id="servicios">
+        <div class="container">
+            <div class="sectionHead">
+                <div>
+                    <h2>Servicios</h2>
+                    <p>Soluciones para mantener tu ambiente cómodo, seguro y eficiente.</p>
+                </div>
+            </div>
+
+            <div class="grid3">
+                <div class="tile">
+                    <div class="icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 14l8-10 8 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M6 14h12v6H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3>Instalación</h3>
+                    <p>Montaje correcto para máximo rendimiento: vacío, aislamiento, drenaje y sellado profesional.</p>
+                </div>
+
+                <div class="tile">
+                    <div class="icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <path d="M6 8h12M6 16h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                opacity=".85" />
+                        </svg>
+                    </div>
+                    <h3>Mantenimiento preventivo</h3>
+                    <p>Limpieza y revisión para evitar fallas, malos olores, goteos y alto consumo eléctrico.</p>
+                </div>
+
+                <div class="tile">
+                    <div class="icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2v4M12 18v4M4 12H2M22 12h-2M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            <path d="M12 8a4 4 0 100 8 4 4 0 000-8z" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <h3>Reparación</h3>
+                    <p>Diagnóstico rápido y reparación: fugas, recarga, placa, ventilación, sensores y más.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proceso">
+        <div class="container">
+            <div class="sectionHead">
+                <div>
+                    <h2>Cómo trabajamos</h2>
+                    <p>Proceso simple, con comunicación clara y garantía.</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="tile">
+                    <h3>1) Evaluación y presupuesto</h3>
+                    <p>Te orientamos según ambiente, BTU y uso. Presupuesto claro y por escrito.</p>
+                </div>
+                <div class="tile">
+                    <h3>2) Instalación o servicio</h3>
+                    <p>Trabajo limpio y seguro. Pruebas, vacío y puesta en marcha con checklist.</p>
+                </div>
+                <div class="tile">
+                    <h3>3) Recomendaciones de uso</h3>
+                    <p>Te explicamos cómo ahorrar energía y cuándo hacer mantenimiento.</p>
+                </div>
+                <div class="tile">
+                    <h3>4) Soporte y garantía</h3>
+                    <p>Respaldamos el servicio y resolvemos cualquier detalle relacionado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="opiniones">
+        <div class="container">
+            <div class="sectionHead">
+                <div>
+                    <h2>Opiniones</h2>
+                    <p>Ejemplos de testimonios (puedes cambiarlos por reseñas reales).</p>
+                </div>
+            </div>
+
+            <div class="grid3">
+                <div class="quote">
+                    <p>“Excelente instalación, prolijos y rápidos. Recomendados.”</p><span>— Cliente en Santiago
+                        Centro</span>
+                </div>
+                <div class="quote">
+                    <p>“El aire quedó como nuevo después de la limpieza, sin malos olores.”</p><span>— Cliente en
+                        Ñuñoa</span>
+                </div>
+                <div class="quote">
+                    <p>“Detectaron el problema y lo solucionaron el mismo día.”</p><span>— Cliente en Maipú</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto">
+        <div class="container">
+            <div class="sectionHead">
+                <div>
+                    <h2>Contacto</h2>
+                    <p>Completa el formulario o escríbenos por WhatsApp. Atención en Santiago de Chile.</p>
+                </div>
+            </div>
+
+            <div class="grid2">
+                <div class="card contactCard">
+                    <form id="contactForm">
+                        <div>
+                            <label for="name">Nombre</label>
+                            <input id="name" name="name" placeholder="Tu nombre" required />
+                        </div>
+
+                        <div>
+                            <label for="phone">Teléfono / WhatsApp</label>
+                            <input id="phone" name="phone" placeholder="+56 9 1234 5678" required />
+                        </div>
+
+                        <div>
+                            <label for="service">Servicio</label>
+                            <select id="service" name="service">
+                                <option>Instalación</option>
+                                <option>Mantenimiento</option>
+                                <option>Reparación</option>
+                                <option>Presupuesto de equipo</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="msg">Mensaje</label>
+                            <textarea id="msg" name="msg"
+                                placeholder="Ej: Split 12.000 BTU, gotea y no enfría. Comuna y horario preferido."></textarea>
+                        </div>
+
+                        <button class="btn primary" type="submit">Enviar por WhatsApp</button>
+                        <small style="color:var(--muted); display:block; line-height:1.5">
+                            Al enviar, se abrirá WhatsApp con tu mensaje listo.
+                        </small>
+                    </form>
+                </div>
+
+                <div class="contactMeta">
+                    <div class="metaRow">
+                        <div class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M6 2h12v20H6z" stroke="currentColor" stroke-width="2" />
+                                <path d="M9 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <b style="color:var(--text)">Teléfono / WhatsApp</b><br />
+                            <a id="phoneLink" href="tel:+56939056898" style="color:var(--muted)">+56 9 3905 6898</a>
+                        </div>
+                    </div>
+
+                    <div class="metaRow">
+                        <div class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1118 0z" stroke="currentColor"
+                                    stroke-width="2" />
+                                <path d="M12 13a3 3 0 100-6 3 3 0 000 6z" stroke="currentColor" stroke-width="2" />
+                            </svg>
+                        </div>
+                        <div>
+                            <b style="color:var(--text)">Área de atención</b><br />
+                            <span style="color:var(--muted)">Santiago de Chile y alrededores</span>
+                        </div>
+                    </div>
+
+                    <div class="metaRow">
+                        <div class="icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M8 7h8M8 12h8M8 17h8" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" />
+                                <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="2"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <b style="color:var(--text)">Horario</b><br />
+                            <span style="color:var(--muted)">Lun–Sáb: 8:00–18:00</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:6px">
+                        <a class="btn" href="#inicio">Volver arriba</a>
+                        <a class="btn primary" id="waQuick" href="#">WhatsApp directo</a>
+                    </div>
+
+                    <small style="color:var(--muted); line-height:1.5">
+                        * Si quieres, puedo agregar mapa (Google Maps), sección de “Comunas”, y un botón de “Cotiza
+                        ahora”.
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+            <span>© <span id="year"></span> Empresa MMA climatización. Todos los derechos reservados.</span>
+            <span>Instalación • Mantenimiento • Reparación | Santiago de Chile</span>
+        </div>
+    </footer>
+
+    <a class="floatWA" id="waFloat" href="#" aria-label="Abrir WhatsApp">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 12a8 8 0 10-15 3l-1 5 5-1a8 8 0 0011-7z" stroke="currentColor" stroke-width="2" />
+            <path d="M8.5 9.5c.5 2 3 4.5 5 5 .7.2 1.4-.2 1.8-.6l.7-.7" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" />
+        </svg>
+        WhatsApp
+    </a>
+
+    <script>
+        // ========= DATOS DEL NEGOCIO =========
+        const BUSINESS = {
+            name: "Empresa MMA climatización",
+            city: "Santiago de Chile",
+            phoneDisplay: "+56 9 3905 6898",
+            phoneTel: "+56939056898", // tel:
+            whatsapp: "56939056898"   // wa.me (solo números)
+        };
+
+        // Apply business data
+        document.title = `${BUSINESS.name} | Instalación de Aire Acondicionado`;
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Mobile menu toggle
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileMenu = document.getElementById("mobileMenu");
+        menuBtn?.addEventListener("click", (e) => {
+            e.preventDefault();
+            mobileMenu.classList.toggle("show");
+        });
+        mobileMenu?.querySelectorAll("a").forEach(a => a.addEventListener("click", () => mobileMenu.classList.remove("show")));
+
+        // WhatsApp helpers
+        function waLink(text) {
+            const encoded = encodeURIComponent(text);
+            return `https://wa.me/${BUSINESS.whatsapp}?text=${encoded}`;
+        }
+
+        // Quick + floating WhatsApp
+        const quickMsg = `Hola, quiero un presupuesto. Soy de ${BUSINESS.city}.`;
+        document.getElementById("waQuick").href = waLink(quickMsg);
+        document.getElementById("waFloat").href = waLink(quickMsg);
+
+        // Contact form -> WhatsApp
+        document.getElementById("contactForm").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const name = document.getElementById("name").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const service = document.getElementById("service").value;
+            const msg = document.getElementById("msg").value.trim();
+
+            const text =
+                `Hola, soy ${name}.
+Tel/WhatsApp: ${phone}
+Servicio: ${service}
+Comuna/Ciudad: ${BUSINESS.city}
+Mensaje: ${msg || "(sin mensaje adicional)"}
+¿Podemos agendar?`;
+
+            window.open(waLink(text), "_blank");
+        });
+    </script>
+</body>
+
+</html>
